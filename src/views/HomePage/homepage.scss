@@ -1,0 +1,301 @@
+@import "../../styles/variables/colors";
+
+:export {
+  lightishRed: $lightish-red;
+}
+
+.navbar {
+  background: black;
+  color: $white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
+
+  .brand {
+    i {
+      margin-right: 0.5rem;
+    }
+    .brand-red {
+      color: $lightish-red;
+    }
+  }
+
+  .navbar-user {
+    display: flex;
+    align-items: center;
+
+    img {
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      margin-left: 1rem;
+    }
+  }
+}
+
+.main-content {
+  display: flex;
+
+  .sidebar {
+    width: 15%;
+    background: $white;
+    min-height: 100vh;
+    border-right: 2px solid $white;
+
+    .company {
+      display: flex;
+      justify-content: space-between;
+      padding: 2rem;
+      background: #ffffff;
+      border-bottom: 2px solid $white;
+      i {
+        color: $lightish-red;
+      }
+    }
+
+    .visit-bar {
+      padding: 2rem;
+      border-bottom: 1px solid $black;
+      min-height: 60vh;
+
+      .sidebar-header {
+        color: $brown-grey;
+        font-size: 16px;
+      }
+      .manage {
+        margin-top: 4rem;
+      }
+      a {
+        display: block;
+        text-decoration: none;
+        color: $black;
+        margin: 1.5rem 0;
+
+        .tag {
+          border: 1px solid;
+          border-radius: 5px;
+          margin-left: 0.5rem;
+          font-size: 12px;
+          padding: 0 0.3rem;
+          color: $brown-grey;
+        }
+
+        &.active {
+          font-weight: bold;
+          color: $black;
+        }
+      }
+    }
+
+    .settings {
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      color: $brown-grey;
+    }
+  }
+
+  .main {
+    flex: 1;
+    padding: 4rem 5rem;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      .header-date {
+        width: 50%;
+        h2 {
+          font-size: 30px;
+        }
+        .date {
+          font-size: 30px;
+          font-weight: bolder;
+          .format-red {
+            margin-left: 9px;
+            color: $lightish-red;
+          }
+        }
+      }
+      .header-statistics {
+        width: 50%;
+        display: flex;
+        .stats {
+          width: 50%;
+          padding: 2rem;
+          border: 1px solid $white;
+          font-size: 20px;
+          .name {
+            margin-bottom: 1rem;
+          }
+          .value {
+            color: $lightish-red;
+            font-size: 42px;
+            margin-right: 1rem;
+          }
+          i {
+            font-size: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.card-info {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  i {
+    font-size: 30px;
+    margin-right: 2rem;
+    color: $brown-grey;
+  }
+}
+
+.search-panel {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid $slight-gray;
+}
+.search {
+  position: relative;
+}
+.search input {
+  text-indent: 50px;
+}
+.search .fa-search {
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  font-size: 18px;
+  color: $slight-gray;
+}
+
+.visit-management {
+  margin-top: 3rem;
+}
+
+.search-visit {
+  width: 100%;
+  border: 1px solid $slight-gray;
+  height: 50px;
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+  }
+}
+
+.filter-date {
+  flex: 1;
+  padding: 0 2rem;
+  .filter {
+    width: 100%;
+
+    i {
+      color: $lightish-red;
+    }
+  }
+}
+
+.ui.dropdown {
+  min-width: 100% !important;
+  display: block !important;
+}
+
+.filter-input-pane {
+  margin-top: 2rem;
+  display: flex;
+  .schedule {
+    font-weight: bold;
+    font-size: 14px;
+    div {
+      margin-bottom: 0 !important;
+    }
+    i.icon {
+      margin-left: 0.5rem !important;
+      color: $lightish-red;
+    }
+    .ui.input {
+      margin-top: 1rem;
+      i.icon {
+        color: rgba(0, 0, 0, 0.87);
+      }
+    }
+  }
+  .heading {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    div {
+      margin-bottom: 1rem;
+    }
+    input {
+      border-radius: 0;
+    }
+  }
+}
+
+.general-filter-header {
+  border-bottom: 1px solid $slight-gray;
+}
+
+.card-info {
+  border-right: 1px solid $slight-gray;
+  width: 18%;
+}
+
+.visit-grid {
+  display: flex;
+  .rule {
+    height: 100%;
+    width: 2%;
+  }
+  .visit-pane {
+    flex: 1;
+  }
+}
+
+.visitor-information {
+  height: 60px;
+  border-radius: 5px;
+  border: 1px solid $white;
+  display: flex;
+  margin: 1rem 0;
+  .visitor-info {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    &.note {
+      width: 10%;
+    }
+    &.host-company {
+      margin-left: 5rem;
+    }
+
+    &.host {
+      margin-left: 1rem;
+    }
+    .checkin {
+      width: 120px;
+
+      border-radius: 10px;
+      border: 1px solid $slight-gray;
+      padding: 0.5rem 1rem;
+      i {
+        color: $slight-gray;
+        margin-left: 2rem;
+      }
+    }
+    .checked-in {
+      i {
+        color: $algae-green;
+      }
+    }
+  }
+}
