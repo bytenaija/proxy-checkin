@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-case-declarations */
 /* eslint-disable no-plusplus */
 import React, { useEffect, useState } from "react";
@@ -14,6 +15,7 @@ import Types from "../../store/visitors/types";
 import VisitManagement from "./components/VisitManagement";
 
 const Homepage = () => {
+  const [allFilters, setFilters] = useState({});
   const visitors = useSelector(state => state.Visitors.visitors);
   const checkedInVisitorsCount = visitors.filter(
     visitor => visitor.visitor_check_in
@@ -49,28 +51,32 @@ const Homepage = () => {
   );
 
   const filterHandler = filter => {
+    const filters = { ...allFilters, filter };
+    setFilters(filters);
     const allVisits = filteredVisits.length ? filteredVisits : visitors;
     let currentVisits = [...allVisits];
-    switch (filter.type) {
-      case "name":
-        currentVisits = currentVisits.filter(visit =>
-          visit.visitor_name.includes(filter.value)
-        );
-        break;
-      case "date":
-        let date = moment();
-        if (filter.value === "tomorrow") {
-          date = date.add(1, "days");
-        } else if (filter.value === "yesterday") {
-          date = date.subtract(1, "days");
-        }
-        currentVisits = currentVisits.filter(visit =>
-          moment(visit.visit_date).isSame(date, "d")
-        );
+    for (const currentFilter of filters) {
+      switch (currentFilter.type) {
+        case "name":
+          currentVisits = currentVisits.currentFilter(visit =>
+            visit.visitor_name.includes(filter.value)
+          );
+          break;
+        case "date":
+          let date = moment();
+          if (currentFilter.value === "tomorrow") {
+            date = date.add(1, "days");
+          } else if (currentFilter.value === "yesterday") {
+            date = date.subtract(1, "days");
+          }
+          currentVisits = currentVisits.filter(visit =>
+            moment(visit.visit_date).isSame(date, "d")
+          );
 
-        break;
-      default:
-        currentVisits = [...visitors];
+          break;
+        default:
+      }
+      currentVisits = [...visitors];
     }
 
     setFilteredVisits(currentVisits);
@@ -90,7 +96,6 @@ const Homepage = () => {
           <VisitManagement
             filterHandler={filterHandler}
             visits={filteredVisits}
-            
           />
         </div>
       </main>
