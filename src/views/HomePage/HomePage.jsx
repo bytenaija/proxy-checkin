@@ -90,6 +90,7 @@ const Homepage = () => {
           <VisitManagement
             filterHandler={filterHandler}
             visits={filteredVisits}
+            
           />
         </div>
       </main>

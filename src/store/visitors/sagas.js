@@ -3,7 +3,7 @@ import axios from "axios";
 import DataTypes from "./types";
 
 const API_BASE_URL =
-  "https://epic-gates-a1c2f8.netlify.com/.netlify/functions/getVisits?count=5";
+  "https://epic-gates-a1c2f8.netlify.com/.netlify/functions/getVisits?count=30";
 
 export const fetchVisitors = async () => {
   const response = await axios.get(`${API_BASE_URL}`);

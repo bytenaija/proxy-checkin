@@ -175,6 +175,7 @@
 
 .visit-management {
   margin-top: 3rem;
+  background: #ffffff;
 }
 
 .search-visit {
@@ -253,7 +254,14 @@
   display: flex;
   .rule {
     height: 100%;
-    width: 2%;
+    text-align: center;
+  }
+
+  .h-rule{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .visit-pane {
     flex: 1;
@@ -261,11 +269,11 @@
 }
 
 .visitor-information {
-  height: 60px;
+  height: 70px;
   border-radius: 5px;
   border: 1px solid $white;
   display: flex;
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   .visitor-info {
     width: 15%;
     display: flex;
