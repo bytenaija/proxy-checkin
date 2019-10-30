@@ -1,3 +1,4 @@
+/* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-case-declarations */
 /* eslint-disable no-plusplus */
@@ -15,7 +16,7 @@ import Types from "../../store/visitors/types";
 import VisitManagement from "./components/VisitManagement";
 
 const Homepage = () => {
-  const [allFilters, setFilters] = useState({});
+  const [allFilters, setFilters] = useState([]);
   const visitors = useSelector(state => state.Visitors.visitors);
   const checkedInVisitorsCount = visitors.filter(
     visitor => visitor.visitor_check_in
@@ -51,32 +52,62 @@ const Homepage = () => {
   );
 
   const filterHandler = filter => {
-    const filters = { ...allFilters, filter };
+    
+    const filters = [...allFilters.filter(f => f.name !== filter.name), filter];
+    console.log("dhdhdhdhdhdhd", filters);
     setFilters(filters);
-    const allVisits = filteredVisits.length ? filteredVisits : visitors;
+    const allVisits = [...visitors];
     let currentVisits = [...allVisits];
     for (const currentFilter of filters) {
+      
       switch (currentFilter.type) {
         case "name":
-          currentVisits = currentVisits.currentFilter(visit =>
-            visit.visitor_name.includes(filter.value)
-          );
-          break;
-        case "date":
-          let date = moment();
-          if (currentFilter.value === "tomorrow") {
-            date = date.add(1, "days");
-          } else if (currentFilter.value === "yesterday") {
-            date = date.subtract(1, "days");
-          }
-          currentVisits = currentVisits.filter(visit =>
-            moment(visit.visit_date).isSame(date, "d")
-          );
+          currentVisits = currentVisits.filter(visit => {
+            if (filter.value) {
+              return visit.visitor_name.includes(filter.value);
+            }
+            return true;
+          });
 
           break;
+        case "date":
+          if (currentFilter.value !== "all") {
+            let date = moment();
+            if (currentFilter.value === "tomorrow") {
+              date = date.add(1, "days");
+            } else if (currentFilter.value === "yesterday") {
+              date = date.subtract(1, "days");
+            }
+            currentVisits = currentVisits.filter(visit =>
+              moment(visit.visit_date).isSame(date, "d")
+            );
+          } else {
+            currentVisits = [...currentVisits];
+          }
+
+          break;
+
+        case "host":
+          currentVisits = currentVisits.filter(visit => {
+            if (filter.value) {
+              return visit.host_name.includes(filter.value);
+            }
+            return true;
+          });
+          break;
+
+        case "hostCompany":
+          currentVisits = currentVisits.filter(visit => {
+            if (filter.value) {
+              return visit.host_company.includes(filter.value);
+            }
+            return true;
+          });
+          break;
+
         default:
+          currentVisits = [...visitors];
       }
-      currentVisits = [...visitors];
     }
 
     setFilteredVisits(currentVisits);

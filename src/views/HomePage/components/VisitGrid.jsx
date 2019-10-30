@@ -7,7 +7,7 @@ const VisitGrid = ({ visits }) => {
   visits = visits.sort(function(a, b) {
     a = new Date(a.visit_date);
     b = new Date(b.visit_date);
-    console.log(a);
+
     let results;
 
     results =
