@@ -290,14 +290,15 @@
       margin-left: 1rem;
     }
     .checkin {
-      width: 120px;
+      width: 140px;
+      display: flex;
 
       border-radius: 10px;
       border: 1px solid $slight-gray;
       padding: 0.5rem 1rem;
       i {
         color: $slight-gray;
-        margin-left: 2rem;
+        margin-left: 1rem;
       }
     }
     .checked-in {
