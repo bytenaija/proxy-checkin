@@ -52,14 +52,12 @@ const Homepage = () => {
   );
 
   const filterHandler = filter => {
-    
     const filters = [...allFilters.filter(f => f.name !== filter.name), filter];
     console.log("dhdhdhdhdhdhd", filters);
     setFilters(filters);
     const allVisits = [...visitors];
     let currentVisits = [...allVisits];
     for (const currentFilter of filters) {
-      
       switch (currentFilter.type) {
         case "name":
           currentVisits = currentVisits.filter(visit => {
@@ -127,6 +125,7 @@ const Homepage = () => {
           <VisitManagement
             filterHandler={filterHandler}
             visits={filteredVisits}
+            hideOnScroll={!hideOnScroll}
           />
         </div>
       </main>

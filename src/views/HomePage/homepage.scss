@@ -243,6 +243,8 @@
 
 .general-filter-header {
   border-bottom: 1px solid $slight-gray;
+  background: #ffffff;
+  width: 100%;
 }
 
 .card-info {
@@ -298,7 +300,7 @@
       padding: 0.5rem 1rem;
       i {
         color: $slight-gray;
-        margin-left: 1rem;
+        margin-left: rem;
       }
     }
     .checked-in {
